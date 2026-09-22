@@ -120,54 +120,56 @@ This experiment uses the **inset microstrip line feed** (or coaxial probe feed, 
 
 ## Observations
 
-### Table 1: Simulated S-Parameter and VSWR Response across Frequency Band
+<img width="1917" height="897" alt="Screenshot 2026-09-13 093417" src="https://github.com/user-attachments/assets/a5da95b8-c0e3-401f-8729-5d99a057d445" />
 
-* **Design Center Frequency ($f_0$):** 2.45 GHz
-* **Substrate Material:** FR-4 Epoxy ($\epsilon_r = 4.4$, $h = 1.58\text{ mm}$, $\tan\delta = 0.02$)
-* **Patch Dimensions:** $W = 37.26\text{ mm}$, $L = 28.83\text{ mm}$
+<img width="1623" height="661" alt="Screenshot 2026-09-13 093716" src="https://github.com/user-attachments/assets/389d67c8-fc07-4a09-8b2c-d474707fe28c" />
 
-| Frequency (GHz) | Return Loss $S_{11}$ (dB) | VSWR | Input Impedance $Z_{\text{in}}\ (\Omega)$ | Operating State |
-| :---: | :---: | :---: | :---: | :---: |
-| 2.30 | -1.15 | 15.20 | $5.4 - j68.2$ | Out of Band |
-| 2.38 | -3.85 | 4.62 | $16.8 - j38.5$ | Mismatched |
-| 2.42 | -9.80 | 1.95 | $33.4 - j14.6$ | Band Edge (-10 dB) |
-| 2.43 | -14.20 | 1.48 | $41.2 - j7.8$ | Good Match |
-| 2.44 | -21.40 | 1.18 | $47.5 - j2.1$ | High Match |
-| **2.448 ($f_0$)** | **-28.62** | **1.07** | **$49.8 + j0.9$** | **Optimal Resonance (Peak)** |
-| 2.46 | -18.50 | 1.27 | $53.6 + j4.5$ | High Match |
-| 2.47 | -10.15 | 1.90 | $58.2 + j12.3$ | Band Edge (-10 dB) |
-| 2.50 | -3.45 | 5.15 | $66.4 + j42.8$ | Mismatched |
-| 2.60 | -0.92 | 18.90 | $82.5 + j110.4$ | Out of Band |
+<img width="1917" height="782" alt="Screenshot 2026-09-13 093732" src="https://github.com/user-attachments/assets/08f34aaf-903e-48c4-885f-0e0704219117" />
 
----
 
-### Table 2: Simulated Antenna Parameters at Resonance ($f_0 = 2.448\text{ GHz}$)
 
-| Parameter | Simulated Value | Target / Ideal Limit | Unit |
-| :--- | :---: | :---: | :---: |
-| Resonant Frequency ($f_0$) | **2.448** | 2.450 | GHz |
-| Return Loss ($S_{11}$)| **-28.62** | $\le -10.0$ | dB |
-| Voltage Standing Wave Ratio (VSWR) | **1.07** | $1.0 - 2.0$ | Dimensionless |
-| Input Impedance ($Z_{\text{in}}$) | **$49.8 + j0.9$** | $50.0 \pm j0$ | $\Omega$ |
-| Peak Realized Gain ($G_0$) | **6.45** | $> 5.0$ | dBi |
-| Peak Directivity ($D_0$) | **6.82** | $> 6.0$ | dBi |
-| Radiation Efficiency ($\eta_{\text{rad}}$) | **91.8** | $> 85.0$ | % |
-| -10 dB Impedance Bandwidth ($\text{BW}$) | **50** ($2.42 - 2.47$) | $\approx 2 - 3\%$ | MHz |
-| Front-to-Back Ratio (FBR) | **15.4** | $> 12.0$ | dB |
-| HPBW (E-plane, $\phi = 0^\circ$) | **72.4** | — | Degrees ($^\circ$) |
-| HPBW (H-plane, $\phi = 90^\circ$) | **84.6** | — | Degrees ($^\circ$) |
+
+### Graphs
+
+
+* S11 vs frequency
+<img width="1621" height="662" alt="Screenshot 2026-09-13 093430" src="https://github.com/user-attachments/assets/10cc6b4a-4d63-401c-951d-c523a60ccb08" />
+
+
+
+* VSWR vs frequency
+
+<img width="1623" height="662" alt="Screenshot 2026-09-13 093449" src="https://github.com/user-attachments/assets/c00fb669-22dc-4086-a927-5657036221a3" />
+
+
+* 2-D E-plane and H-plane radiation patterns
+
+
+<img width="1620" height="657" alt="Screenshot 2026-09-13 093522" src="https://github.com/user-attachments/assets/b2472055-6622-461c-bb57-bac1804cc2d7" />
+
 
 ---
+
+## Precautions
+
+1. Ensure the air box / radiation boundary is at least λ/4 away from the patch structure on all sides.
+2. Use a fine mesh near the feed point and patch edges for accurate convergence.
+3. Verify the substrate material properties (ε_r, loss tangent, thickness) before running the simulation.
+4. Check the port impedance and de-embedding settings before reading S11/VSWR values.
+5. Validate the geometry (no overlapping or unassigned boundaries) before analysis.
 
 ## Result
 
-* **Resonant Frequency:** `2.448 GHz`
-* **Return Loss ($S_{11}$):** `-28.62 dB`
-* **VSWR:** `1.07`
-* **Gain:** `6.45 dBi`
+Resonant Frequency = 2.4GHz  
 
----
+Return loss =-25 dB
+
+VSWR = 1.12
+
+Gain = 6.5DBI
+
 
 ## Conclusion
 
-A rectangular microstrip patch antenna was designed and simulated at **2.45 GHz** using Ansys HFSS. The antenna resonated cleanly at **2.448 GHz** with an input return loss ($S_{11}$) of **-28.62 dB** and a VSWR of **1.07**, confirming excellent impedance matching to the $50\ \Omega$ inset microstrip feed line. The simulated radiation pattern demonstrated broadside directive characteristics with a half-power beamwidth of **$72.4^\circ$** in the E-plane and **$84.6^\circ$** in the H-plane, delivering a peak realized gain of **6.45 dBi** and a radiation efficiency of **91.8%** across a $-10\text{ dB}$ fractional bandwidth of **2.04%** (50 MHz).
+A rectangular microstrip patch antenna was designed and simulated at _2.4_____ GHz using Ansys HFSS.
+
